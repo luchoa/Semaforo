@@ -26,7 +26,7 @@ public class Vermelho extends Thread {
         try {
             for( int i = 0; i < n; i++ ){
                 System.out.println("Vermelho dormindo...");
-                this.sleep( (int) (Math.random()*2000));
+                this.sleep( (int) (Math.random()*9000));
                 System.out.println("Vermelho acordando...");
                 if( i != 0 )
                     this.m.get( (s)==0?m.get_total()-1:(s-1) ).acquire();
