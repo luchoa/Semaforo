@@ -26,7 +26,7 @@ public class Azul extends Thread {
             for( int i = 0; i < n; i++ ){
             	int tempo = (int) (Math.random()*9000);
                 this.sleep(tempo);
-                System.out.println("Azul dormiu por " + tempo + " segundos");
+                System.out.println("Azul dormiu por " + tempo/1000 + " segundos");
                 
                 //Verifica se processo anterior terminou de executar
                 this.monitor.get( (posicao)<0?monitor.get_total()-1:(posicao-1) ).acquire();
