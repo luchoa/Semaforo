@@ -25,9 +25,7 @@ public class Verde extends Thread {
     public void run(){
         try {
             for( int i = 0; i < n; i++ ){
-                System.out.println("Verde dormindo...");
                 this.sleep( (int) (Math.random()*9000));
-                System.out.println("Verde acordando...");
                 //Verifica se processo anterior terminou de executar
                 this.monitor.get( (posicao)<0?monitor.get_total()-1:(posicao-1) ).acquire();
                 System.out.println("VERDE");

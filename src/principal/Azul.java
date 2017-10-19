@@ -7,17 +7,16 @@ import java.util.logging.Logger;
 public class Azul extends Thread {
     
     int n = 0;
-    Monitor monitorm;
+    Monitor monitor;
     int posicao;
     
     public Azul( int n, Monitor m ) throws InterruptedException{
         this.n = n;
-        this.monitorm = m;
+        this.monitor = m;
         
-        // Inicializa o sem. azul
         Semaphore azul = new Semaphore( 1 );
         azul.acquire();
-        posicao = this.monitorm.add( azul );
+        posicao = this.monitor.add( azul );
         System.out.println("POS AZUL = " + posicao);
     }
     
@@ -25,13 +24,11 @@ public class Azul extends Thread {
     public void run(){
         try {
             for( int i = 0; i < n; i++ ){
-                System.out.println("Azul dormindo...");
                 this.sleep( (int) (Math.random()*9000));
-                System.out.println("Azul acordando...");
                 //Verifica se processo anterior terminou de executar
-                this.monitorm.get( (posicao)<0?monitorm.get_total()-1:(posicao-1) ).acquire();
+                this.monitor.get( (posicao)<0?monitor.get_total()-1:(posicao-1) ).acquire();
                 System.out.println("AZUL");
-                this.monitorm.get( (posicao) ).release();
+                this.monitor.get( (posicao) ).release();
             }
         } catch (InterruptedException ex) {}
     }
