@@ -32,7 +32,6 @@ public class Vermelho extends Thread {
                 //Verifica se processo anterior terminou de executar
                 if( i != 0 ) //condicao para primeira execução
                     this.monitor.get( (posicao)==0?monitor.get_total()-1:(posicao-1) ).acquire();
-                System.out.println("i = " + i);
                 System.out.println("VERMELHO");
                 this.monitor.get( (posicao) ).release();
             }
