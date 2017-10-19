@@ -30,7 +30,7 @@ public class Azul extends Thread {
                 
                 //Verifica se processo anterior terminou de executar
                 this.monitor.get( (posicao)<0?monitor.get_total()-1:(posicao-1) ).acquire();
-                System.out.println("AZUL");
+                System.out.println("----->AZUL<-----");
                 this.monitor.get( (posicao) ).release();
             }
         } catch (InterruptedException ex) {}
