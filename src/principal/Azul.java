@@ -28,6 +28,7 @@ public class Azul extends Thread {
                 System.out.println("Azul dormindo...");
                 this.sleep( (int) (Math.random()*9000));
                 System.out.println("Azul acordando...");
+                //Verifica se processo anterior terminou de executar
                 this.monitorm.get( (posicao)<0?monitorm.get_total()-1:(posicao-1) ).acquire();
                 System.out.println("AZUL");
                 this.monitorm.get( (posicao) ).release();

@@ -28,7 +28,9 @@ public class Vermelho extends Thread {
                 System.out.println("Vermelho dormindo...");
                 this.sleep( (int) (Math.random()*9000));
                 System.out.println("Vermelho acordando...");
-                if( i != 0 )
+                
+                //Verifica se processo anterior terminou de executar
+                if( i != 0 ) //condicao para primeira execução
                     this.monitor.get( (posicao)==0?monitor.get_total()-1:(posicao-1) ).acquire();
                 System.out.println("i = " + i);
                 System.out.println("VERMELHO");
