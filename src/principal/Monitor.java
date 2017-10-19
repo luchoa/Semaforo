@@ -9,9 +9,9 @@ public class Monitor {
     
     private ArrayList<Semaphore> semaforos = new ArrayList<Semaphore>();
     
-    public int add( Semaphore s ){
-        this.semaforos.add( s );
-        return this.semaforos.indexOf( s );
+    public int add( Semaphore posicao ){
+        this.semaforos.add( posicao );
+        return this.semaforos.indexOf( posicao );
     }
     
     public void del( Semaphore s ){

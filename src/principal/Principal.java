@@ -9,19 +9,18 @@ public class Principal {
         if( args.length != 1 ) System.exit(1);
         int n = Integer.valueOf( args[0] );
         
-        Monitor m = new Monitor();
+        Monitor monitor = new Monitor();        
+        Vermelho vermelho = new Vermelho( n, monitor );
+        Azul     azul = new Azul( n, monitor );
+        Verde    verde = new Verde( n, monitor );
         
-        Vermelho t1 = new Vermelho( n, m );
-        Azul     t2 = new Azul( n, m );
-        Verde    t3 = new Verde( n, m );
+        vermelho.start();
+        azul.start();
+        verde.start();
         
-        t1.start();
-        t2.start();
-        t3.start();
-        
-        t1.join();
-        t2.join();
-        t3.join();
+        vermelho.join();
+        azul.join();
+        verde.join();
         
     }
     

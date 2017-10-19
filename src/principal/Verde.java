@@ -7,18 +7,18 @@ import java.util.logging.Logger;
 public class Verde extends Thread {
     
     int n = 0;
-    Monitor m;
-    int s;
+    Monitor monitor;
+    int posicao;
     
     public Verde( int n, Monitor m ) throws InterruptedException{
         this.n = n;
-        this.m = m;
+        this.monitor = m;
         
         // Inicializa o sem. verde
         Semaphore verde = new Semaphore( 1 );
         verde.acquire();
-        s = this.m.add( verde );
-        System.out.println("POS VERDE = " + s);
+        posicao = this.monitor.add( verde );
+        System.out.println("POS VERDE = " + posicao);
     }
     
     @Override
@@ -28,10 +28,10 @@ public class Verde extends Thread {
                 System.out.println("Verde dormindo...");
                 this.sleep( (int) (Math.random()*9000));
                 System.out.println("Verde acordando...");
-                this.m.get( (s)<0?m.get_total()-1:(s-1) ).acquire();
+                this.monitor.get( (posicao)<0?monitor.get_total()-1:(posicao-1) ).acquire();
                 System.out.println("VERDE");
                 System.out.println("-----------------------");
-                this.m.get( (s) ).release();
+                this.monitor.get( (posicao) ).release();
             }
         } catch (InterruptedException ex) {}
     }
