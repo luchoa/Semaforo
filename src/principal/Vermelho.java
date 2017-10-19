@@ -25,7 +25,9 @@ public class Vermelho extends Thread {
     public void run(){
         try {
             for( int i = 0; i < n; i++ ){
-                this.sleep( (int) (Math.random()*9000));
+            	int tempo = (int) (Math.random()*9000);
+                this.sleep(tempo);
+                System.out.println("Vermelho dormiu por " + tempo + " segundos");
                 
                 //Verifica se processo anterior terminou de executar
                 if( i != 0 ) //condicao para primeira execução
