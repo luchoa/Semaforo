@@ -32,7 +32,7 @@ public class Verde extends Thread {
                 //Verifica se processo anterior terminou de executar
                 this.monitor.get( (posicao)<0?monitor.get_total()-1:(posicao-1) ).acquire();
                 System.out.println("----->VERDE<-----");
-                System.out.println("-----------------------");
+                System.out.println("________________________________________");
                 this.monitor.get( (posicao) ).release();
             }
         } catch (InterruptedException ex) {}
